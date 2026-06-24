@@ -59,7 +59,6 @@ const diggy = {
   bg: 'linear-gradient(180deg, #e3e1e2, #131313)'
 };
 
-
 const mongol = {
   songName: "The Wolf Totem",
   artist: 'The Hu',
@@ -73,7 +72,7 @@ const pursuit = {
   artist: 'Amon Amarth',
   file: 'Pursuit',
   liked: false,
-  bg: 'linear-gradient(180deg, #242325, #19181a)'
+  bg: 'linear-gradient(180deg, #302b00, #000000)'
 };
 
 const oar = {
@@ -81,9 +80,40 @@ const oar = {
   artist: 'Amon Amarth',
   file: 'Oar',
   liked: false,
-  bg: 'linear-gradient(180deg, #233d53, #080d13)'
+  bg: 'linear-gradient(180deg, #162533, #000000)'
 };
 
+const wolf = {
+  songName: "Een Wolf In Mijn Hart",
+  artist: 'Heidevolk',
+  file: 'Wolf',
+  liked: false,
+  bg: 'linear-gradient(180deg, #9b7b4b, #080705)'
+};
+
+const token = {
+  songName: "Token of the time",
+  artist: 'Ensiferum',
+  file: 'Token',
+  liked: false,
+  bg: 'linear-gradient(180deg, #8b6227, #000000)'
+};
+
+const lai = {
+  songName: "Lai Lai Hei",
+  artist: 'Ensiferum',
+  file: 'Lai_Lai_Hei',
+  liked: false,
+  bg: 'linear-gradient(180deg, #ae7537, #040201)'
+};
+
+const upright = {
+  songName: "Upright Destined Mongol",
+  artist: 'The Hu',
+  file: 'Upright',
+  liked: false,
+  bg: 'linear-gradient(180deg, #e51c38, #040201)'
+};
 
 
 let isPlaying = false;
@@ -98,7 +128,11 @@ const originalPlaylist = JSON.parse(localStorage.getItem('playlist')) ?? [
   vulgaris,
   mongol,
   pursuit,
-  oar
+  oar,
+  wolf,
+  token,
+  lai,
+  upright
 ];
 let sortedPlaylist = [...originalPlaylist];
 let index = 0;
