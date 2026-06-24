@@ -68,6 +68,24 @@ const mongol = {
   bg: 'linear-gradient(180deg, #292c2b, #131313)'
 };
 
+const pursuit = {
+  songName: "The Pursuit of Viking",
+  artist: 'Amon Amarth',
+  file: 'Pursuit',
+  liked: false,
+  bg: 'linear-gradient(180deg, #242325, #19181a)'
+};
+
+const oar = {
+  songName: "Put Your Back Into The Oar",
+  artist: 'Amon Amarth',
+  file: 'Oar',
+  liked: false,
+  bg: 'linear-gradient(180deg, #233d53, #080d13)'
+};
+
+
+
 let isPlaying = false;
 let isShuffled = false;
 let repeatOn = false;
@@ -75,24 +93,26 @@ const originalPlaylist = JSON.parse(localStorage.getItem('playlist')) ?? [
   troll,
   diggy,
   ennen,
-  mongol,
   tumman,
   twilight,
-  vulgaris
+  vulgaris,
+  mongol,
+  pursuit,
+  oar
 ];
 let sortedPlaylist = [...originalPlaylist];
 let index = 0;
 
 function playSong() {
-  play.querySelector('.bi').classList.remove('bi-play-circle-fill');
-  play.querySelector('.bi').classList.add('bi-pause-circle-fill');
+  play.querySelector('#bi').classList.remove('bi-play-circle-fill');
+  play.querySelector('#bi').classList.add('bi-pause-circle-fill');
   song.play();
   isPlaying = true;
 }
 
 function pauseSong() {
-  play.querySelector('.bi').classList.add('bi-play-circle-fill');
-  play.querySelector('.bi').classList.remove('bi-pause-circle-fill');
+  play.querySelector('#bi').classList.add('bi-play-circle-fill');
+  play.querySelector('#bi').classList.remove('bi-pause-circle-fill');
   song.pause();
   isPlaying = false;
 }
@@ -107,12 +127,12 @@ function playPauseDecider() {
 
 function likeButtonRender() {
   if (sortedPlaylist[index].liked === true) {
-    likeButton.querySelector('.bi').classList.remove('bi-heart');
-    likeButton.querySelector('.bi').classList.add('bi-heart-fill');
+    likeButton.querySelector('#bi').classList.remove('bi-heart');
+    likeButton.querySelector('#bi').classList.add('bi-heart-fill');
     likeButton.classList.add('button-active');
   } else {
-    likeButton.querySelector('.bi').classList.add('bi-heart');
-    likeButton.querySelector('.bi').classList.remove('bi-heart-fill');
+    likeButton.querySelector('#bi').classList.add('bi-heart');
+    likeButton.querySelector('#bi').classList.remove('bi-heart-fill');
     likeButton.classList.remove('button-active');
   }
 }
@@ -182,7 +202,7 @@ function shuffleButtonClicked() {
     const currentSong = sortedPlaylist[index];
     isShuffled = false;
     sortedPlaylist = [...originalPlaylist];
-    index = sortedPlaylist.indexOf(currentSong); // idem ao desfazer o shuffle
+    index = sortedPlaylist.indexOf(currentSong);
     shuffleButton.classList.remove('button-active');
   }
 }
