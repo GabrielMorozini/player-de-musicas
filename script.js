@@ -6,147 +6,42 @@ const play = document.getElementById('play');
 const next = document.getElementById('next');
 const previous = document.getElementById('previous');
 const likeButton = document.getElementById('like');
-const currentProgress = document.getElementById('current-progress');
-const progressContainer = document.getElementById('progress-container');
+const currentProgress = document.querySelector('.current-progress');
+const progressContainer = document.querySelector('.progress-container');
 const shuffleButton = document.getElementById('shuffle');
 const repeatButton = document.getElementById('repeat');
 const songTime = document.getElementById('song-time');
 const totalTime = document.getElementById('total-time');
 
-const troll = {
-  songName: 'Trollhammaren',
-  artist: 'Finntroll',
-  file: 'Trollhammaren',
-  liked: false,
-  bg: 'linear-gradient(180deg, #8e6d5d, #1d1612)'
-};
-const twilight = {
-  songName: 'Twilight of the Thunder God',
-  artist: 'Amon Amarth',
-  file: 'Twilight_of_the_Thunder_God',
-  liked: true,
-  bg: 'linear-gradient(180deg, #a4b6ca, #181a1c)'
-};
-const ennen = {
-  songName: "Ennen",
-  artist: 'Korpiklaani',
-  file: 'Ennen',
-  liked: false,
-  bg: 'linear-gradient(180deg, #78592f, #181209)'
-};
-
-const vulgaris = {
-  songName: "Vulgaris Magistralis",
-  artist: 'heidevolk',
-  file: 'Vulgaris',
-  liked: false,
-  bg: 'linear-gradient(180deg, #bdd4ce, #151817)'
-};
-
-const tumman = {
-  songName: "Heathen Throne Longest journey",
-  artist: 'Ensiferum',
-  file: 'Tumman',
-  liked: false,
-  bg: 'linear-gradient(180deg, #7a97cd, #0e131d)'
-};
-
-const diggy = {
-  songName: "Diggy Diggy Hole",
-  artist: 'Wind Rose',
-  file: 'Diggy',
-  liked: false,
-  bg: 'linear-gradient(180deg, #e3e1e2, #131313)'
-};
-
-const mongol = {
-  songName: "The Wolf Totem",
-  artist: 'The Hu',
-  file: 'Mongol',
-  liked: false,
-  bg: 'linear-gradient(180deg, #292c2b, #131313)'
-};
-
-const pursuit = {
-  songName: "The Pursuit of Viking",
-  artist: 'Amon Amarth',
-  file: 'Pursuit',
-  liked: false,
-  bg: 'linear-gradient(180deg, #302b00, #000000)'
-};
-
-const oar = {
-  songName: "Put Your Back Into The Oar",
-  artist: 'Amon Amarth',
-  file: 'Oar',
-  liked: false,
-  bg: 'linear-gradient(180deg, #162533, #000000)'
-};
-
-const wolf = {
-  songName: "Een Wolf In Mijn Hart",
-  artist: 'Heidevolk',
-  file: 'Wolf',
-  liked: false,
-  bg: 'linear-gradient(180deg, #9b7b4b, #080705)'
-};
-
-const token = {
-  songName: "Token of the time",
-  artist: 'Ensiferum',
-  file: 'Token',
-  liked: false,
-  bg: 'linear-gradient(180deg, #8b6227, #000000)'
-};
-
-const lai = {
-  songName: "Lai Lai Hei",
-  artist: 'Ensiferum',
-  file: 'Lai_Lai_Hei',
-  liked: false,
-  bg: 'linear-gradient(180deg, #ae7537, #040201)'
-};
-
-const upright = {
-  songName: "Upright Destined Mongol",
-  artist: 'The Hu',
-  file: 'Upright',
-  liked: false,
-  bg: 'linear-gradient(180deg, #e51c38, #040201)'
-};
-
-
 let isPlaying = false;
 let isShuffled = false;
 let repeatOn = false;
-const originalPlaylist = JSON.parse(localStorage.getItem('playlist')) ?? [
-  troll,
-  diggy,
-  ennen,
-  tumman,
-  twilight,
-  vulgaris,
-  mongol,
-  pursuit,
-  oar,
-  wolf,
-  token,
-  lai,
-  upright
-];
-let sortedPlaylist = [...originalPlaylist];
+let originalPlaylist = [];
+let sortedPlaylist = [];
 let index = 0;
 
+async function loadPlaylist() {
+  const saved = localStorage.getItem('playlist');
+  if (saved) {
+    originalPlaylist = JSON.parse(saved);
+  } else {
+    const response = await fetch('songs.json');
+    originalPlaylist = await response.json();
+  }
+  sortedPlaylist = [...originalPlaylist];
+  initializeSong();
+}
+
 function playSong() {
-  play.querySelector('#bi').classList.remove('bi-play-circle-fill');
-  play.querySelector('#bi').classList.add('bi-pause-circle-fill');
+  play.querySelector('i').classList.remove('bi-play-circle-fill');
+  play.querySelector('i').classList.add('bi-pause-circle-fill');
   song.play();
   isPlaying = true;
 }
 
 function pauseSong() {
-  play.querySelector('#bi').classList.add('bi-play-circle-fill');
-  play.querySelector('#bi').classList.remove('bi-pause-circle-fill');
+  play.querySelector('i').classList.add('bi-play-circle-fill');
+  play.querySelector('i').classList.remove('bi-pause-circle-fill');
   song.pause();
   isPlaying = false;
 }
@@ -161,12 +56,12 @@ function playPauseDecider() {
 
 function likeButtonRender() {
   if (sortedPlaylist[index].liked === true) {
-    likeButton.querySelector('#bi').classList.remove('bi-heart');
-    likeButton.querySelector('#bi').classList.add('bi-heart-fill');
+    likeButton.querySelector('i').classList.remove('bi-heart');
+    likeButton.querySelector('i').classList.add('bi-heart-fill');
     likeButton.classList.add('button-active');
   } else {
-    likeButton.querySelector('#bi').classList.add('bi-heart');
-    likeButton.querySelector('#bi').classList.remove('bi-heart-fill');
+    likeButton.querySelector('i').classList.add('bi-heart');
+    likeButton.querySelector('i').classList.remove('bi-heart-fill');
     likeButton.classList.remove('button-active');
   }
 }
@@ -228,9 +123,9 @@ function shuffleArray(preShuffleArray) {
 function shuffleButtonClicked() {
   if (isShuffled === false) {
     isShuffled = true;
-    const currentSong = sortedPlaylist[index]; // guarda a música atual
+    const currentSong = sortedPlaylist[index];
     shuffleArray(sortedPlaylist);
-    index = sortedPlaylist.indexOf(currentSong); // recalcula a posição
+    index = sortedPlaylist.indexOf(currentSong);
     shuffleButton.classList.add('button-active');
   } else {
     const currentSong = sortedPlaylist[index];
@@ -264,8 +159,6 @@ function toHHMMSS(originalNumber) {
   let min = Math.floor((originalNumber - hours * 3600) / 60);
   let secs = Math.floor(originalNumber - hours * 3600 - min * 60);
 
-  console.log('hours: ', hours);
-
   return `${hours !== 0 ? hours.toString().padStart(2, '0') + ':' : ''}${min
     .toString()
     .padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
@@ -276,16 +169,10 @@ function updateTotalTime() {
 }
 
 function likeButtonClicked() {
-  if (sortedPlaylist[index].liked === false) {
-    sortedPlaylist[index].liked = true;
-  } else {
-    sortedPlaylist[index].liked = false;
-  }
+  sortedPlaylist[index].liked = !sortedPlaylist[index].liked;
   likeButtonRender();
   localStorage.setItem('playlist', JSON.stringify(originalPlaylist));
 }
-
-initializeSong();
 
 play.addEventListener('click', playPauseDecider);
 previous.addEventListener('click', previousSong);
@@ -297,3 +184,5 @@ progressContainer.addEventListener('click', jumpTo);
 shuffleButton.addEventListener('click', shuffleButtonClicked);
 repeatButton.addEventListener('click', repeatButtonClicked);
 likeButton.addEventListener('click', likeButtonClicked);
+
+loadPlaylist();

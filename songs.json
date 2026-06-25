@@ -1,0 +1,93 @@
+[
+  {
+    "songName": "Trollhammaren",
+    "artist": "Finntroll",
+    "file": "Trollhammaren",
+    "liked": false,
+    "bg": "linear-gradient(180deg, #8e6d5d, #1d1612)"
+  },
+  {
+    "songName": "Diggy Diggy Hole",
+    "artist": "Wind Rose",
+    "file": "Diggy",
+    "liked": false,
+    "bg": "linear-gradient(180deg, #e3e1e2, #131313)"
+  },
+  {
+    "songName": "Ennen",
+    "artist": "Korpiklaani",
+    "file": "Ennen",
+    "liked": false,
+    "bg": "linear-gradient(180deg, #78592f, #181209)"
+  },
+  {
+    "songName": "Heathen Throne Longest journey",
+    "artist": "Ensiferum",
+    "file": "Tumman",
+    "liked": false,
+    "bg": "linear-gradient(180deg, #7a97cd, #0e131d)"
+  },
+  {
+    "songName": "Twilight of the Thunder God",
+    "artist": "Amon Amarth",
+    "file": "Twilight_of_the_Thunder_God",
+    "liked": true,
+    "bg": "linear-gradient(180deg, #a4b6ca, #181a1c)"
+  },
+  {
+    "songName": "Vulgaris Magistralis",
+    "artist": "Heidevolk",
+    "file": "Vulgaris",
+    "liked": false,
+    "bg": "linear-gradient(180deg, #bdd4ce, #151817)"
+  },
+  {
+    "songName": "The Wolf Totem",
+    "artist": "The Hu",
+    "file": "Mongol",
+    "liked": false,
+    "bg": "linear-gradient(180deg, #292c2b, #131313)"
+  },
+  {
+    "songName": "The Pursuit of Viking",
+    "artist": "Amon Amarth",
+    "file": "Pursuit",
+    "liked": false,
+    "bg": "linear-gradient(180deg, #302b00, #000000)"
+  },
+  {
+    "songName": "Put Your Back Into The Oar",
+    "artist": "Amon Amarth",
+    "file": "Oar",
+    "liked": false,
+    "bg": "linear-gradient(180deg, #162533, #000000)"
+  },
+  {
+    "songName": "Een Wolf In Mijn Hart",
+    "artist": "Heidevolk",
+    "file": "Wolf",
+    "liked": false,
+    "bg": "linear-gradient(180deg, #9b7b4b, #080705)"
+  },
+  {
+    "songName": "Token of the time",
+    "artist": "Ensiferum",
+    "file": "Token",
+    "liked": false,
+    "bg": "linear-gradient(180deg, #8b6227, #000000)"
+  },
+  {
+    "songName": "Lai Lai Hei",
+    "artist": "Ensiferum",
+    "file": "Lai_Lai_Hei",
+    "liked": false,
+    "bg": "linear-gradient(180deg, #ae7537, #040201)"
+  },
+  {
+    "songName": "Upright Destined Mongol",
+    "artist": "The Hu",
+    "file": "Upright",
+    "liked": false,
+    "bg": "linear-gradient(180deg, #e51c38, #040201)"
+  }
+]
