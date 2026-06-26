@@ -6,8 +6,8 @@ const play = document.getElementById('play');
 const next = document.getElementById('next');
 const previous = document.getElementById('previous');
 const likeButton = document.getElementById('like');
-const currentProgress = document.querySelector('.current-progress');
-const progressContainer = document.querySelector('.progress-container');
+const currentProgress = document.getElementById('current-progress');
+const progressContainer = document.getElementById('progress-container');
 const shuffleButton = document.getElementById('shuffle');
 const repeatButton = document.getElementById('repeat');
 const songTime = document.getElementById('song-time');
@@ -33,7 +33,7 @@ async function loadPlaylist() {
 }
 
 function playSong() {
-  play.querySelector('i').classList.remove('bi-play-circle-fill');
+  play.querySelector ('i').classList.remove('bi-play-circle-fill');
   play.querySelector('i').classList.add('bi-pause-circle-fill');
   song.play();
   isPlaying = true;
