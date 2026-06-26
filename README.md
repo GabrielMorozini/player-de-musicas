@@ -1,10 +1,6 @@
-🎵 Playlist Morozini
+🎵 Playlist Faxina de Sábado
 
 Um music player web com playlist de folk/viking metal, construído com HTML, CSS e JavaScript puro.
-
-🎸 Músicas
-
-MúsicaArtistaTrollhammarenFinntrollTwilight of the Thunder GodAmon AmarthEnnenKorpiklaaniVulgaris MagistralisHeidevolkHeathen Throne Longest JourneyEnsiferumDiggy Diggy HoleWind RoseThe Wolf TotemThe Hu
 
 ✨ Funcionalidades
 
@@ -32,6 +28,24 @@ Abra o index.html em um servidor local (ex: Live Server no VS Code)
 
 
 
+🐳 Rodando com Docker
+
+Pré-requisitos: ter o Docker instalado.
+
+```bash
+docker compose up -d
+```
+
+Acesse no navegador: http://localhost
+
+Para parar:
+
+```bash
+docker compose down
+```
+
+> Caso a porta 80 já esteja em uso (ex: Apache), edite o `compose.yaml` e troque `"80:80"` por `"8080:80"`, depois acesse http://localhost:8080
+
 🛠️ Tecnologias
 
 
@@ -40,6 +54,7 @@ CSS3
 JavaScript (ES6+)
 Bootstrap Icons
 localStorage para persistir os likes
+Docker + Nginx para servir o projeto
 
 
 💾 Persistência
